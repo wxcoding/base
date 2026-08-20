@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.guanwx.mapper.UserMapper">
+    <select id="selectListByName" resultType="com.guanwx.entity.User">
+        select * from user where name = #{name};
+    </select>
+    <select id="selectListByNameAndAge" resultType="com.guanwx.entity.User">
+        select * from user where name = #{name} and age = #{age};
+    </select>
+
+    <update id="updateById1">
+        update user set name = #{name}, age = #{age} where id = #{id};
+    </update>
+
+</mapper>
+

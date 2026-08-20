@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EasyCodeTableSetting">
+    <option name="tableInfoMap">
+      <map>
+        <entry key="test1214.user" value="eyJuYW1lIjoiVXNlciIsInByZU5hbWUiOiIiLCJ0ZW1wbGF0ZUdyb3VwTmFtZSI6IkRlZmF1bHQiLCJmdWxsQ29sdW1uIjpbeyJuYW1lIjoiaWQiLCJ0eXBlIjoiamF2YS5sYW5nLkludGVnZXIiLCJjdXN0b20iOmZhbHNlLCJleHQiOiJ7fSJ9LHsibmFtZSI6Im5hbWUiLCJ0eXBlIjoiamF2YS5sYW5nLlN0cmluZyIsImN1c3RvbSI6ZmFsc2UsImV4dCI6Int9In0seyJuYW1lIjoiYWdlIiwidHlwZSI6ImphdmEubGFuZy5JbnRlZ2VyIiwiY3VzdG9tIjpmYWxzZSwiZXh0Ijoie30ifSx7Im5hbWUiOiJlbWFpbCIsInR5cGUiOiJqYXZhLmxhbmcuU3RyaW5nIiwiY3VzdG9tIjpmYWxzZSwiZXh0Ijoie30ifV0sInNhdmVQYWNrYWdlTmFtZSI6ImNvbS5ndWFud3giLCJzYXZlUGF0aCI6Ii4vc3JjL21haW4vamF2YS9jb20vZ3Vhbnd4Iiwic2F2ZU1vZGVsTmFtZSI6ImRlbW8tSmF2YTI2MDEwMSJ9" />
+      </map>
+    </option>
+  </component>
+</project>

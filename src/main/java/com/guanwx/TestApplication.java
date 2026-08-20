@@ -1,13 +1,15 @@
 package com.guanwx;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan("com.guanwx.mapper")
 @SpringBootApplication
-public class DemoJava260101Application {
+public class TestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoJava260101Application.class, args);
+        SpringApplication.run(TestApplication.class, args);
     }
 
 }
