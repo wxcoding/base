@@ -1,4 +1,4 @@
-package com.guanwx.base.design;
+package com.guanwx.base.design.single;
 
 /**
  * @Author: guanwx

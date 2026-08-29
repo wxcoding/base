@@ -26,13 +26,11 @@ public class BaseMap {
         }
         log.info("==========================================================");
 
-
         // map的遍历3:entrySet
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
         }
         log.info("==========================================================");
-
 
         // map的遍历4：iterator
         Iterator<Map.Entry<String, String>> iterator = map.entrySet().iterator();

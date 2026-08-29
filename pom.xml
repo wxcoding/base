@@ -21,6 +21,13 @@
 
     <dependencies>
 
+        <!-- Flyway 数据库迁移 -->
+<!--        <dependency>-->
+<!--            <groupId>org.flywaydb</groupId>-->
+<!--            <artifactId>flyway-core</artifactId>-->
+<!--            <version>7.15.0</version>-->
+<!--        </dependency>-->
+
         <!-- RabbitMQ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

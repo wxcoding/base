@@ -1,4 +1,4 @@
-package com.guanwx.base.design.single.factory;
+package com.guanwx.base.design.factory;
 
 /**
  * @Author: guanwx
@@ -9,7 +9,7 @@ package com.guanwx.base.design.single.factory;
 
 public class BenChiCarFactory implements CarFactory{
 
-    public Car getCar() {
+    public BenChiCar getCar() {
         return new BenChiCar();
     }
 

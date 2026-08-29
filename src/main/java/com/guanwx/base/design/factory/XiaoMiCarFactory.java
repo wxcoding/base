@@ -1,4 +1,5 @@
-package com.guanwx.base.design.single.factory;
+
+package com.guanwx.base.design.factory;
 
 /**
  * @Author: guanwx
@@ -7,10 +8,10 @@ package com.guanwx.base.design.single.factory;
  * @Version: 1.0
  */
 
-public class BenChiCarFactory implements CarFactory{
+public class XiaoMiCarFactory implements CarFactory{
 
-    public Car getCar() {
-        return new BenChiCar();
+    public XiaoMiCar getCar() {
+        return new XiaoMiCar();
     }
 
 }

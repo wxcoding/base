@@ -1,4 +1,4 @@
-package com.guanwx.service.impl;
+package com.guanwx.service;
 
 import com.guanwx.entity.Users;
 
