@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 public class BaseMap {
@@ -38,6 +39,14 @@ public class BaseMap {
             Map.Entry<String, String> next = iterator.next();
             System.out.println(next.getKey() + " = " + next.getValue());
         }
+
+
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
+        concurrentHashMap.putAll(map);
+        System.out.println("------------------------------------------------------------");
+        concurrentHashMap.forEach((k, v) -> System.out.println(k + " = " + v));
+
+
     }
 
 }
