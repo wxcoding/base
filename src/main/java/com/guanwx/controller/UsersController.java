@@ -1,5 +1,6 @@
 package com.guanwx.controller;
 
+import com.guanwx.common.Result;
 import com.guanwx.entity.Users;
 import com.guanwx.mapper.UsersMapper;
 import com.guanwx.service.UsersService;
@@ -27,13 +28,13 @@ public class UsersController {
     private UsersService usersService;
 
     @GetMapping("/getUsersByUsername/{username}")
-    public List<Users> getUsersByUsername (@PathVariable String username) {
-        return usersService.getUsersByUsername(username);
+    public Result<List<Users>> getUsersByUsername (@PathVariable String username) {
+        return Result.success(usersService.getUsersByUsername(username));
     }
 
     @PostMapping("/login")
-    public String login (@RequestBody Users user) {
-        return usersService.login(user.getId(), user.getPasswordHash());
+    public Result<String> login (@RequestBody Users user) {
+        return Result.success(usersService.login(user.getId(), user.getPasswordHash()));
     }
 
 }
