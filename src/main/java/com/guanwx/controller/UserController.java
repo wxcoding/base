@@ -1,5 +1,6 @@
 package com.guanwx.controller;
 
+import com.guanwx.common.Result;
 import com.guanwx.entity.User;
 import com.guanwx.mq.MessageProducer;
 import com.guanwx.service.UserService;
@@ -29,20 +30,20 @@ public class UserController {
 
     // 根据名称和年龄查询用户
     @RequestMapping("/getUser")
-    public List<User> getUser(String name, Integer age) {
-        return userService.selectListByNameAndAge(name, age);
+    public Result<List<User>> getUser(String name, Integer age) {
+        return Result.success(userService.selectListByNameAndAge(name, age));
     }
 
     // 查询所有用户
     @RequestMapping("/getUserList")
-    public List<User> getUserList() {
-        return userService.selectList();
+    public Result<List<User>> getUserList() {
+        return Result.success(userService.selectList());
     }
 
     // 发送消息
     @RequestMapping("/sendMsg")
-    public String sendMsg(@RequestParam String msg) {
+    public Result<String> sendMsg(@RequestParam String msg) {
         messageProducer.send(msg);
-        return "消息已发送";
+        return Result.success("消息已发送");
     }
 }
