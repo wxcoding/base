@@ -25,4 +25,23 @@ public class UsersServiceImpl implements UsersService {
     public List<Users> getUsersByUsername(String username) {
         return usersMapper.getUsersByUsername(username);
     }
+
+
+    // 用户登录
+    @Override
+    public String login(String userId, String password) {
+        Users users = usersMapper.selectById(userId);
+
+        if (users == null) {
+            return "用户不存在！！！";
+        }
+        if (password == null) {
+            return "密码为空！！！";
+        }
+        if (!password.equals(users.getPasswordHash())) {
+            return "密码不正确！！！";
+        }
+        return "密码正确，登录成功。。。";
+
+    }
 }

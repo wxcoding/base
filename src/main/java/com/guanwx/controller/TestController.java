@@ -1,6 +1,7 @@
 package com.guanwx.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.guanwx.common.Result;
 import com.guanwx.service.cloud.CloudLock;
 import com.guanwx.entity.User;
 import com.guanwx.mapper.UserMapper;
@@ -24,41 +25,40 @@ public class TestController {
     private UserServiceImpl UserService;
 
     @GetMapping("/test1")
-    public String test1() {
+    public Result<String> test1() {
         System.out.println("\n" + "test1");
-        return "test1";
+        return Result.success("test1");
     }
 
     @GetMapping("/getUser")
-    public List<User> getUser() {
+    public Result<List<User>> getUser() {
         List<User> selectList = userMapper.selectList(new LambdaQueryWrapper<User>());
         selectList.forEach(System.out::println);
-        return selectList;
-
+        return Result.success(selectList);
     }
 
     @GetMapping("/getUserById/{id}")
-    public User getUserById(@PathVariable("id") Integer id) {
-        return userMapper.selectById(id);
+    public Result<User> getUserById(@PathVariable Integer id) {
+        return Result.success(userMapper.selectById(id));
     }
 
     @GetMapping("/getUserByName/{name}")
-    public List<User> getUserByName(@PathVariable("name") String name) {
-        return userMapper.selectListByName(name);
+    public Result<List<User>> getUserByName(@PathVariable String name) {
+        return Result.success(userMapper.selectListByName(name));
     }
 
     @GetMapping("/updateUserById1")
-    public int updateUserById(@RequestParam("id") Integer id,
+    public Result<Integer> updateUserById(@RequestParam("id") Integer id,
                               @RequestParam("name") String name,
                               @RequestParam("age") Integer age) {
         int updateRows = userMapper.updateById1(name, age, id);
         System.out.println("updateRows: " + updateRows);
-        return updateRows;
+        return Result.success(updateRows);
     }
 
     @GetMapping("/lock/{orderId}")
-    public boolean lockOrder(@PathVariable("orderId") String orderId) {
-        return cloudLock.orderGrabbing(orderId);
+    public Result<Boolean> lockOrder(@PathVariable String orderId) {
+        return Result.success(cloudLock.orderGrabbing(orderId));
     }
 
 }

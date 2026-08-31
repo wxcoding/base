@@ -1,13 +1,12 @@
 package com.guanwx.controller;
 
 import com.guanwx.entity.Users;
+import com.guanwx.mapper.UsersMapper;
 import com.guanwx.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 /**
@@ -22,11 +21,19 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
+    private UsersMapper usersMapper;
+
+    @Autowired
     private UsersService usersService;
 
     @GetMapping("/getUsersByUsername/{username}")
-    public List<Users> getUsersByUsername (@PathVariable("username") String username) {
+    public List<Users> getUsersByUsername (@PathVariable String username) {
         return usersService.getUsersByUsername(username);
+    }
+
+    @PostMapping("/login")
+    public String login (@RequestBody Users user) {
+        return usersService.login(user.getId(), user.getPasswordHash());
     }
 
 }
