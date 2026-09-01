@@ -1,7 +1,5 @@
 package com.guanwx.base.exception;
 
-import java.util.HashMap;
-
 /**
  * @Author: guanwx
  * @CreateTime: 2026/8/29 星期六 18:43
