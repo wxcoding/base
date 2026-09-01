@@ -12,4 +12,5 @@ public class BenChiCar implements Car{
     public String getName() {
         return "奔驰汽车";
     }
+
 }
