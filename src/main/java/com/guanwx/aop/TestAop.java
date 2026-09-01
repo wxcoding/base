@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class TestAdvice {
+public class TestAop {
 
     @Around("execution(* com.guanwx.controller.*.*.test(..))")
     public Object method1(ProceedingJoinPoint pjp) throws Throwable {
