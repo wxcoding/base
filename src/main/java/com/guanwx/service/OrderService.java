@@ -1,5 +1,7 @@
 package com.guanwx.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guanwx.entity.Orders;
 
 import java.util.List;
@@ -10,12 +12,11 @@ import java.util.List;
  * @Description:
  * @Version: 1.0
  */
-
 public interface OrderService {
 
     List<Orders> getOrderList();
 
-    List<Orders> getPageOrderList();
+    IPage<Orders> getPageOrderList(Page<Orders> page);
 
-
+    Orders getOrderById(Long id);
 }

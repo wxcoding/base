@@ -1,7 +1,6 @@
 package com.guanwx.exception;
 
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 /**
