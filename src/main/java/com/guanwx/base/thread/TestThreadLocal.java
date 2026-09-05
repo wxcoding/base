@@ -19,6 +19,8 @@ public class TestThreadLocal {
 
         thread2();
 
+        thread3();
+
     }
 
     public static void thread1 () {
@@ -35,5 +37,14 @@ public class TestThreadLocal {
             System.out.println(threadLocal.get());
         }).start();
     }
+
+    public static void thread3 () {
+        new Thread (() -> {
+            threadLocal.set("thread3");
+            System.out.println(threadLocal.get());
+            threadLocal.remove();
+        }).start();
+    }
+
 
 }
