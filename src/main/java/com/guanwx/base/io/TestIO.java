@@ -1,7 +1,5 @@
 package com.guanwx.base.io;
 
-import org.apache.tomcat.websocket.AsyncChannelWrapper;
-
 import java.io.*;
 
 /**
