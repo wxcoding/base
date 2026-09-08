@@ -6,11 +6,13 @@ import com.guanwx.service.cloud.CloudLock;
 import com.guanwx.entity.User;
 import com.guanwx.mapper.UserMapper;
 import com.guanwx.service.impl.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -26,14 +28,13 @@ public class TestController {
 
     @GetMapping("/test1")
     public Result<String> test1() {
-        System.out.println("\n" + "test1");
+        log.info("test1");
         return Result.success("test1");
     }
 
     @GetMapping("/getUser")
     public Result<List<User>> getUser() {
         List<User> selectList = userMapper.selectList(new LambdaQueryWrapper<User>());
-        selectList.forEach(System.out::println);
         return Result.success(selectList);
     }
 
@@ -52,7 +53,7 @@ public class TestController {
                               @RequestParam("name") String name,
                               @RequestParam("age") Integer age) {
         int updateRows = userMapper.updateById1(name, age, id);
-        System.out.println("updateRows: " + updateRows);
+        log.info("updateRows: {}", updateRows);
         return Result.success(updateRows);
     }
 
