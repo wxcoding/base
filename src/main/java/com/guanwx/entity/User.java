@@ -2,6 +2,8 @@ package com.guanwx.entity;
 
 import lombok.Data;
 
+import java.math.BigInteger;
+
 /**
  * (User)实体类
  *
@@ -12,7 +14,7 @@ import lombok.Data;
 @Data
 public class User {
 
-    private Integer id;
+    private BigInteger id;
 
     private String name;
 

@@ -5,13 +5,15 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guanwx.entity.Orders;
 import com.guanwx.exception.GlobalException;
-import com.guanwx.mapper.OrderMapper;
-import com.guanwx.service.OrderService;
+import com.guanwx.mapper.OrdersMapper;
+import com.guanwx.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: guanwx
@@ -19,15 +21,24 @@ import java.util.List;
  * @Description:
  * @Version: 1.0
  */
+
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrdersServiceImpl implements OrdersService {
+
+    private RedisTemplate<String, List<Orders>> redisTemplate;
 
     @Autowired
-    private OrderMapper orderMapper;
+    private OrdersMapper ordersMapper;
 
     @Override
     public List<Orders> getOrderList() {
-        return orderMapper.selectList(new QueryWrapper<Orders>().eq("delete_flag", 0));
+        List<Orders> orderList = redisTemplate.opsForValue().get("orderList");
+        if (orderList != null) {
+            return orderList;
+        }
+        orderList = ordersMapper.selectList(new QueryWrapper<Orders>().eq("delete_flag", 0));
+        redisTemplate.opsForValue().set("orderList", orderList, 1, TimeUnit.DAYS);
+        return orderList;
     }
 
     @Override
@@ -35,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
         if (page == null) {
             page = new Page<>(1, 10);
         }
-        return orderMapper.selectPage(page, new QueryWrapper<Orders>().eq("delete_flag", 0));
+        return ordersMapper.selectPage(page, new QueryWrapper<Orders>().eq("delete_flag", 0));
     }
 
     @Override
@@ -44,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
             throw new GlobalException(HttpStatus.BAD_REQUEST, "订单ID不能为空或必须大于0");
         }
 
-        Orders orders = orderMapper.selectById(id);
+        Orders orders = ordersMapper.selectById(id);
         if (orders == null) {
             throw new GlobalException(HttpStatus.NOT_FOUND, "订单不存在");
         }

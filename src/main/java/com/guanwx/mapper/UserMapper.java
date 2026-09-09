@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    List<User> selectListByName(String name);
+    List<User> selectListByName(@Param("name") String name);
 
     int updateById1(@Param("name") String name,
                     @Param("age") Integer age,

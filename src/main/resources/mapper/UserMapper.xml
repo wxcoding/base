@@ -6,7 +6,7 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.guanwx.mapper.UserMapper">
     <select id="selectListByName" resultType="com.guanwx.entity.User">
-        select * from user where name = #{name};
+        select * from user where name like CONCAT('%', #{name}, '%');
     </select>
     <select id="selectListByNameAndAge" resultType="com.guanwx.entity.User">
         select * from user where name = #{name} and age = #{age};

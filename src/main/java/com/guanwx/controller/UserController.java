@@ -5,10 +5,7 @@ import com.guanwx.entity.User;
 import com.guanwx.mq.MessageProducer;
 import com.guanwx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +35,22 @@ public class UserController {
         return Result.success(userService.selectList());
     }
 
+    // 添加用户
+    @GetMapping("/addUser")
+    public Result<Boolean> addUser(@RequestParam(required = false) User user) {
+        if (user ==null) {
+            user = new User();
+            user.setAge(18);
+            user.setName("小明");
+            user.setEmail("xiaoming@example.com");
+        }
+        return Result.success(userService.addUser(user));
+    }
+
+    // 模糊查询
+    @GetMapping("/getUserByName")
+    public Result<List<User>> getUserByName(@RequestParam String name) {
+        return Result.success(userService.selectListByName(name));
+    }
 
 }

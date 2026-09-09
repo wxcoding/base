@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guanwx.common.Result;
 import com.guanwx.entity.Orders;
 import com.guanwx.exception.GlobalException;
-import com.guanwx.service.OrderService;
+import com.guanwx.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +23,11 @@ import java.util.List;
  * @Version: 1.0
  */
 @RestController
-@RequestMapping("/order")
-public class OrderController {
+@RequestMapping("/orders")
+public class OrdersController {
 
     @Autowired
-    private OrderService orderService;
+    private OrdersService orderService;
 
     @GetMapping("/orderList")
     public Result<List<Orders>> getOrderList() {
@@ -42,7 +42,7 @@ public class OrderController {
         return Result.success(orderService.getPageOrderList(page));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getOrderById/{id}")
     public Result<Orders> getOrderById(@PathVariable Long id) {
         if (id == null || id <= 0) {
             throw new GlobalException(HttpStatus.BAD_REQUEST, "订单ID必须大于0");

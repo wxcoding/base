@@ -12,7 +12,8 @@ import java.util.List;
  * @Description:
  * @Version: 1.0
  */
-public interface OrderService {
+
+public interface OrdersService {
 
     List<Orders> getOrderList();
 

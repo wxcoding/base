@@ -1,5 +1,6 @@
 package com.guanwx.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.guanwx.entity.User;
 import com.guanwx.mapper.UserMapper;
 import com.guanwx.service.UserService;
@@ -43,6 +44,17 @@ public class UserServiceImpl implements UserService {
         redisTemplate.opsForValue().set("usersAll", usersAll, 10, TimeUnit.SECONDS);
         System.out.println("从数据库中获取数据，耗时：" + (System.currentTimeMillis() - start) + "ms");
         return usersAll;
+    }
+
+    // 添加用户
+    public boolean addUser (User user) {
+        int insert = userMapper.insert(user);
+        return insert > 0;
+    }
+
+    // 模糊查询
+    public List<User> selectListByName(String name) {
+        return userMapper.selectList(new LambdaQueryWrapper<User>().like(User::getName, name));
     }
 
 

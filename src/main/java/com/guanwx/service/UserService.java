@@ -19,4 +19,8 @@ public interface UserService {
     // 查询所有用户
     List<User> selectList();
 
+    boolean addUser(User user);
+
+    List<User> selectListByName(String name);
+
 }
