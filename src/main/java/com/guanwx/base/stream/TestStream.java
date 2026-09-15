@@ -1,5 +1,7 @@
 package com.guanwx.base.stream;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,8 +14,31 @@ import java.util.List;
 public class TestStream {
     public static void main(String[] args) {
 
-        List<String> strings = List.of("1", "2", "3");
-        strings.stream().forEach(string -> System.out.println(string));
+        List<String> strings = new ArrayList<>(List.of("1", "2", "3"));
+        strings.forEach(System.out::println);
+
+        System.out.println("===================");
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("3", "3");
+        map.forEach((key, value) -> System.out.println(key + ": " + value));
+
+        System.out.println("-------------------");
+
+        for (String key : map.keySet()) {
+            if ("1".equals(key)) {
+                map.put(key, "一");
+            }
+            if ("2".equals(key)) {
+                map.put(key, "二");
+            }
+            if ("3".equals(key)) {
+                map.put(key, "三");
+            }
+            System.out.println(key + ": " + map.get(key));
+        }
 
     }
 

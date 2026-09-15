@@ -241,5 +241,37 @@ public class Test1 {
     }
 
 
+    // 爬楼梯：每次可以走 1 层或者 2 层台阶，求总共有多少种走法
+    // 典型的动态规划问题：dp[i] 表示爬到第 i 层台阶的不同走法数量
+    public static int climbStairs(int n) {
+        if (n <= 0) {
+            System.out.println("楼梯数必须大于0!");
+            throw new RuntimeException("楼梯数必须大于0!");
+        }
+        // 当只有 1 层台阶时，只能走 1 步，方案数为 1
+        if (n == 1) {
+            return 1;
+        }
+        // 当有 2 层台阶时，有两种走法：1+1 或 2
+        if (n == 2) {
+            return 2;
+        }
+
+        // dp 数组中 dp[i] 表示爬到第 i 层的走法数
+        // 到达第 i 层台阶，最后一步只能从第 i-1 层走 1 步到达，或者从第 i-2 层走 2 步到达
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        // 从第 3 层开始计算，递推公式：dp[i] = dp[i - 1] + dp[i - 2]
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        // 返回爬到第 n 层的总走法数
+        return dp[n];
+    }
+
+
 
 }
