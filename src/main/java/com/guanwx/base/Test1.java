@@ -36,6 +36,8 @@ public class Test1 {
 
         System.out.println(generateUUID());
 
+        System.out.println(climbStairs1(3));
+
     }
 
     // 冒泡排序
@@ -270,6 +272,21 @@ public class Test1 {
 
         // 返回爬到第 n 层的总走法数
         return dp[n];
+    }
+
+    // 解释一下这段代码：`climbStairs1` 方法是一个递归实现的爬楼梯问题的解法。它计算从第 1 层到第 n 层的不同走法数量，每次可以选择走 1 层或 2 层台阶。
+    public static int climbStairs1(int n) {
+        if (n <= 0) {
+            System.out.println("楼梯数必须大于0!");
+            throw new RuntimeException("楼梯数必须大于0!");
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        return climbStairs1 (n - 1) + climbStairs1 (n - 2);
     }
 
 
