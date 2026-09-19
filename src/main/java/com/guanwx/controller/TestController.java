@@ -1,11 +1,10 @@
 package com.guanwx.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.guanwx.common.Result;
+import com.guanwx.service.UserService;
 import com.guanwx.service.cloud.CloudLock;
 import com.guanwx.entity.User;
 import com.guanwx.mapper.UserMapper;
-import com.guanwx.service.impl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class TestController {
     UserMapper userMapper;
 
     @Autowired
-    private UserServiceImpl UserService;
+    private UserService userService;
 
     @GetMapping("/test1")
     public Result<String> test1() {
@@ -34,7 +33,7 @@ public class TestController {
 
     @GetMapping("/getUser")
     public Result<List<User>> getUser() {
-        List<User> selectList = userMapper.selectList(new LambdaQueryWrapper<User>());
+        List<User> selectList = userService.selectList();
         return Result.success(selectList);
     }
 

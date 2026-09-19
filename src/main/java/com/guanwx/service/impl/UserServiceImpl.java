@@ -1,6 +1,7 @@
 package com.guanwx.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.guanwx.entity.User;
 import com.guanwx.mapper.UserMapper;
 import com.guanwx.service.UserService;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -56,6 +57,5 @@ public class UserServiceImpl implements UserService {
     public List<User> selectListByName(String name) {
         return userMapper.selectList(new LambdaQueryWrapper<User>().like(User::getName, name));
     }
-
 
 }

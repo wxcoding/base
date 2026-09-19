@@ -2,7 +2,6 @@ package com.guanwx.controller;
 
 import com.guanwx.common.Result;
 import com.guanwx.entity.User;
-import com.guanwx.mq.MessageProducer;
 import com.guanwx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
