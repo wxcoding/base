@@ -1,8 +1,10 @@
 package com.guanwx.base.stream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: guanwx
@@ -40,6 +42,9 @@ public class TestStream {
             System.out.println(key + ": " + map.get(key));
         }
 
+        ArrayList<Integer> integers = new ArrayList<>(List.of(1, 2, 5, 6, 7));
+        List<Integer> filterList = integers.stream().filter(i -> i > 3).collect(Collectors.toList());
+        System.out.println(filterList);
     }
 
 
