@@ -3,13 +3,20 @@ package com.guanwx.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class TestAop {
 
-    @Around("execution(* com.guanwx.controller.*.*.test(..))")
+    // 定义切点，匹配com.guanwx.controller包下的所有方法
+    @Pointcut("execution(* com.guanwx.controller.*.*(..))")
+    public static void pointCut() {
+
+    }
+
+    @Around("pointCut()")
     public Object method1(ProceedingJoinPoint pjp) throws Throwable {
         // 开始统计时间
         long startTime = System.nanoTime();

@@ -26,9 +26,6 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UsersMapper usersMapper;
-
-    @Autowired
     private UsersService usersService;
 
     @Operation(summary = "根据用户名查询用户")
