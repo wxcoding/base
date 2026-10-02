@@ -2,7 +2,6 @@ package com.guanwx.controller;
 
 import com.guanwx.common.Result;
 import com.guanwx.entity.Users;
-import com.guanwx.mapper.UsersMapper;
 import com.guanwx.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
