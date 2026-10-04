@@ -47,5 +47,17 @@ public class TestStream {
         System.out.println(filterList);
     }
 
+    // 两数之和
+    public static int[] twoNumSum(int[] nums, int target) {
+        if (nums == null || nums.length <= 0) return new int[]{-1, -1};
+        HashMap<Integer, Integer> numsMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            numsMap.put(nums[i], i);
+            int tempNum = target - nums[i];
+            if (numsMap.containsKey(tempNum)) return new int[]{i, numsMap.get(tempNum)};
+        }
+        return new int[]{-1, -1};
+    }
+
 
 }
