@@ -68,9 +68,7 @@ public class Test1 {
         for (int i = 0; i < nums.length; i++) {
             indexMap.put(nums[i], i);
             int temp = target - nums[i];
-            if (indexMap.containsKey(temp)) {
-                return new int[]{i, indexMap.get(temp)};
-            }
+            if (indexMap.containsKey(temp)) return new int[]{i, indexMap.get(temp)};
         }
         return new int[0];
     }
