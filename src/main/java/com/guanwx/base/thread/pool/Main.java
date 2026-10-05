@@ -10,9 +10,18 @@ package com.guanwx.base.thread.pool;
 public class Main {
     public static void main(String[] args) {
 
-        BizService bizService = new BizService();
+        new BizService().doSomeBiz();
 
-        bizService.doSomeBiz();
+        for (int i = 0; i < 4; i++) {
+            ThreadPoolUtil.execute(() -> {
+                System.out.println("线程池执行：" + Thread.currentThread().getName());
+            });
+        }
+
+        System.out.println("主线程执行：" + Thread.currentThread().getName());
+
+        // 关闭线程池
+        ThreadPoolUtil.shutdown();
 
     }
 }
