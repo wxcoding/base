@@ -30,6 +30,7 @@ public class ThreadPoolUtil {
      * 若需更复杂的配置（如通过外部配置文件），可改造为懒加载或工厂方式。
      */
     static {
+        // 获取当前 Java 运行环境可用的处理器核心数（通常是逻辑核心数），并保存到变量 cpu。下面初始化线程池时用它来设置线程数：核心线程数为 cpu，最大线程数为 cpu * 2
         int cpu = Runtime.getRuntime().availableProcessors();
         BUSINESS_POOL = new ThreadPoolExecutor(
                 // corePoolSize：基础并发数，保持该数量的线程常驻
