@@ -111,7 +111,7 @@ public class Test1 {
 
 
     // 给定一个整数集合，进行去重
-    public static int[] distinctNums (int[] nums) {
+    public static int[] distinctNums(int[] nums) {
         if (nums == null || nums.length == 0) {
             System.out.println("数组为空!");
             throw new RuntimeException("数组为空!");
@@ -155,7 +155,7 @@ public class Test1 {
 
 
     // 找出一个整数数组的最大数
-    public static int findMax (int[] nums) {
+    public static int findMax(int[] nums) {
         if (nums == null || nums.length == 0) {
             System.out.println("数组为空!");
             throw new RuntimeException("数组为空!");
@@ -187,7 +187,7 @@ public class Test1 {
 
 
     // 只出现一次的数字 位运算
-    public static int singleNumber (int[] nums) {
+    public static int singleNumber(int[] nums) {
         if (nums == null || nums.length == 0) {
             System.out.println("数组为空!");
             throw new RuntimeException("数组为空!");
@@ -201,7 +201,7 @@ public class Test1 {
 
 
     // 只出现一次的数字 哈希表
-    public static int singleNumber1 (int[] nums) {
+    public static int singleNumber1(int[] nums) {
         if (nums == null || nums.length == 0) {
             System.out.println("数组为空!");
             throw new RuntimeException("数组为空!");
@@ -220,7 +220,7 @@ public class Test1 {
 
 
     // 只出现一次的数字 链表（保持插入顺序）
-    public static int[] singleNumber2 (int[] nums) {
+    public static int[] singleNumber2(int[] nums) {
         HashMap<Integer, Integer> map = new LinkedHashMap<>();
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
@@ -284,9 +284,31 @@ public class Test1 {
         if (n == 2) {
             return 2;
         }
-        return climbStairs1 (n - 1) + climbStairs1 (n - 2);
+        return climbStairs1(n - 1) + climbStairs1(n - 2);
     }
 
+    // 找出一个整数数组中只出现一次的数字（返回所有只出现一次的数字）
+    public static int[] findSingleNumber(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            System.out.println("数组为空!");
+            throw new IllegalArgumentException("数组为空!");
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+        ArrayList<Integer> singleLists = new ArrayList<>();
+        for (int num : nums) {
+            if (map.get(num) == 1) {
+                singleLists.add(num);
+            }
+        }
+        return singleLists.stream().mapToInt(Integer::intValue).toArray();
+    }
 
 
 }
